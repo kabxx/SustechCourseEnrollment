@@ -1,0 +1,31 @@
+[package]
+name = "sustech-course-enrollment"
+version = "1.0.0"
+edition = "2021"
+rust-version = "1.78"
+description = "Keyboard-first cross-platform TUI client for SUSTech TIS course enrollment"
+license = "MIT"
+readme = "README.md"
+exclude = ["config.yaml", "cache.json", "*.log", ".codex/", "accounts.json", "cache-*.json"]
+
+[dependencies]
+crossterm = "0.27"
+ratatui = { version = "0.26.3", default-features = false, features = ["crossterm"] }
+reqwest = { version = "0.12", default-features = false, features = ["charset", "http2", "json", "rustls-tls", "gzip", "brotli", "deflate", "system-proxy"] }
+keyring = { version = "3.6.2", default-features = false, features = ["windows-native"] }
+scraper = "0.20"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+thiserror = "1.0"
+tokio = { version = "1.39", features = ["macros", "rt-multi-thread", "sync", "time"] }
+url = "2.5"
+
+[dev-dependencies]
+tempfile = "3.12"
+
+[profile.release]
+opt-level = "z"
+lto = "fat"
+codegen-units = 1
+panic = "unwind"
+strip = "symbols"

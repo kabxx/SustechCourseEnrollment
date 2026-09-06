@@ -1,0 +1,10 @@
+/.idea/
+/.codex/
+/target/
+
+# Local runtime state or accidental legacy files
+accounts.json
+cache*.json
+cookies-*.json
+*.log
+config.yaml
